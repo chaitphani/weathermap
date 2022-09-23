@@ -14,12 +14,20 @@ from .serializers import (
 
 class WeatherInformationView(APIView):
 
+    '''
+    API which gives current weather details of the requested city
+    '''
     serializer_class = InputWeatherSerializer
     output_serializer = WeatherInfoSerializer
     app_id = "b0b2a8c6eb68cf455d2b353ed0537b55"
 
     def post(self, request):
 
+        '''
+        the post method takes city as request data
+        reads the data in openweather API based on the city
+        gives us the required weather data of the entered city.
+        '''
         data = self.serializer_class(data=request.data)
         data.is_valid(raise_exception=True)
 
@@ -43,10 +51,18 @@ class WeatherInformationView(APIView):
 
 class WeatherForecastView2(APIView):
 
+    '''
+    API which is used to get the weather forecast data of the city
+    '''
     serializer_class = InputWeatherSerializer
     app_id = "b0b2a8c6eb68cf455d2b353ed0537b55"
 
     def post(self, request):
+        '''
+        the post method takes city as request data
+        reads the data in openweather API based on the city
+        gives us the required weather forecast data of the entered city.
+        ''' 
         data = self.serializer_class(data=request.data)
         data.is_valid(raise_exception=True)
 
