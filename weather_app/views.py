@@ -62,7 +62,7 @@ class WeatherForecastView2(APIView):
         the post method takes city as request data
         reads the data in openweather API based on the city
         gives us the required weather forecast data of the entered city.
-        ''' 
+        '''
         data = self.serializer_class(data=request.data)
         data.is_valid(raise_exception=True)
 
@@ -99,11 +99,18 @@ class WeatherForecastView2(APIView):
 
 class WeatherForecastView(APIView):
 
+    '''
+    API which is used to get the weather forecast data of the city
+    '''
     serializer_class = InputWeatherForecastSerializer
     api_key = "	Cv7lxQHaIrQguPuYrDuLYFtQehczLXyy"
 
     def post(self, request):
-
+        '''
+        the post method takes city as request data
+        reads the data in openweather API based on the city
+        gives us the required weather forecast data of the entered city.
+        '''
         data = self.serializer_class(data=request.data)
         data.is_valid(raise_exception=True)
 
